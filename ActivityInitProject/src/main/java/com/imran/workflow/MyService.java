@@ -26,7 +26,7 @@ public class MyService {
 	 
 	@Transactional
 	public void startProcess() {	
-	  runtimeService.startProcessInstanceByKey("anotherUserTaskProcess");
+	  runtimeService.startProcessInstanceByKey("exclusiveGetwayTaskProcess");
 	 }
 		
 	
