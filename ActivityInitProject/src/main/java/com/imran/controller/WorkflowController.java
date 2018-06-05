@@ -44,6 +44,12 @@ public class WorkflowController {
 	        myService.startProcess();
 	     return "Successfully Process started";
 	 }
+	 
+	 @RequestMapping(value="/startprocess-withvar", method= RequestMethod.GET)
+	 public String startProcessInstanceWithVariabl3e(@RequestParam String x) {
+	        myService.startProcessWithVar(x);
+	     return "Successfully Process started With Variable";
+	 }
 
 	 
 }

@@ -2,6 +2,8 @@ package com.imran.workflow;
 
 import java.util.List;
 import java.util.Date;
+import java.util.HashMap;
+
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.task.Task;
@@ -27,6 +29,16 @@ public class MyService {
 	@Transactional
 	public void startProcess() {	
 	  runtimeService.startProcessInstanceByKey("exclusiveGetwayTaskProcess");
+	 }
+	
+	@Transactional
+	public void startProcessWithVar(String x) {	
+		
+		HashMap<String, Object> variableMap = new HashMap<String, Object>();
+        variableMap.put("x", x);
+        variableMap.put("dfuser", "mim");
+		
+	  runtimeService.startProcessInstanceByKey("usingVariableMapForDynamicValue", variableMap);
 	 }
 		
 	
