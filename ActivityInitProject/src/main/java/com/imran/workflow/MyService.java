@@ -32,13 +32,22 @@ public class MyService {
 	 }
 	
 	@Transactional
-	public void startProcessWithVar(String x) {	
-		
+	public void startProcessWithVar(String val) {		
 		HashMap<String, Object> variableMap = new HashMap<String, Object>();
-        variableMap.put("x", x);
-        variableMap.put("dfuser", "mim");
+		int userInput = 0;
+		 userInput = Integer.parseInt(val);
+		if(userInput==2){
+	        variableMap.put("isEnableTaskTwo", true);
+	        variableMap.put("isEnableTaskThree", false);
+		}else if(userInput==3){
+	        variableMap.put("isEnableTaskTwo", false);
+	        variableMap.put("isEnableTaskThree", true);
+		}else{
+	        variableMap.put("isEnableTaskTwo", true);
+	        variableMap.put("isEnableTaskThree", true);
+		}
 		
-	  runtimeService.startProcessInstanceByKey("usingVariableMapForDynamicValue", variableMap);
+	  runtimeService.startProcessInstanceByKey("inclusiveGetwayTaskProcess", variableMap);
 	 }
 		
 	

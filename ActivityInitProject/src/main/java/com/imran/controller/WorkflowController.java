@@ -50,6 +50,12 @@ public class WorkflowController {
 	        myService.startProcessWithVar(x);
 	     return "Successfully Process started With Variable";
 	 }
+	 
+	 @RequestMapping(value="/startprocess-inclusive", method= RequestMethod.GET)
+	 public String startProcessInstanceWithVariableInclusive(@RequestParam String val) {
+	        myService.startProcessWithVar(val);
+	     return "Successfully Inclusive Process started With Variable";
+	 }
 
 	 
 }
