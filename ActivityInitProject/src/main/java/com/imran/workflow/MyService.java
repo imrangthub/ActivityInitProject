@@ -32,6 +32,25 @@ public class MyService {
 	 }
 	
 	@Transactional
+	public void startSubProcessWithVar(String val) {		
+		HashMap<String, Object> variableMap = new HashMap<String, Object>();
+		int userInput = 0;
+		 userInput = Integer.parseInt(val);
+		if(userInput==1){	 
+	        variableMap.put("isEnableSubProsOne", true);
+	        variableMap.put("isEnableSubProsTwo", false);
+		}else if(userInput==2){
+	        variableMap.put("isEnableSubProsOne", false);
+	        variableMap.put("isEnableSubProsTwo", true);
+		}else{
+	        variableMap.put("isEnableSubProsOne", false);
+	        variableMap.put("isEnableSubProsTwo", false);
+		}
+		
+	  runtimeService.startProcessInstanceByKey("subprocessEmbdTaskProcess", variableMap);
+	 }
+	
+	@Transactional
 	public void startProcessWithVar(String val) {		
 		HashMap<String, Object> variableMap = new HashMap<String, Object>();
 		int userInput = 0;
